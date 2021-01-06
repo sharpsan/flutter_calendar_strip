@@ -2,7 +2,7 @@ library calendar_strip;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import './date-utils.dart';
+import './date-utils.dart' as stripDateUtils;
 
 class CalendarStrip extends StatefulWidget {
   // This widget is the root of your application.
@@ -82,7 +82,7 @@ class CalendarStripState extends State<CalendarStrip>
   CalendarStripState(
       DateTime selectedDate, DateTime startDate, DateTime endDate) {
     today = getDateOnly(DateTime.now());
-    lastDayOfMonth = DateUtils.getLastDayOfMonth(currentDate);
+    lastDayOfMonth = stripDateUtils.DateUtils.getLastDayOfMonth(currentDate);
     runPresetsAndExceptions(selectedDate, startDate, endDate);
     this.selectedDate = currentDate;
   }
@@ -146,7 +146,7 @@ class CalendarStripState extends State<CalendarStrip>
   }
 
   int getLastDayOfMonth(rowStartingDay) {
-    return DateUtils.getLastDayOfMonth(
+    return stripDateUtils.DateUtils.getLastDayOfMonth(
             currentDate.add(Duration(days: rowStartingDay)))
         .day;
   }
